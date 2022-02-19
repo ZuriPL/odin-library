@@ -16,7 +16,7 @@ function addBookToLibrary() {
     const name = prompt('Set a name for your book');
     const author = prompt('Set the author for your book');
     const pages = prompt('How many pages does your book have?');
-    let isRead = prompt('Have you read it yet?').toLowerCase();
+    let isRead = prompt('Have you read it yet? (answer with yes if true, anything else will result in false').toLowerCase();
     isRead = isRead == 'yes' ? true : false
 
     const book = new Book(name, author, pages, isRead);
