@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #ddd;
+}
+
+.nav {
+    display: flex;
+    padding: 1rem 1.5rem;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 
+        0px 2px 5px hsl(0 0% 0% / 0.05), 
+        0px 3px 5px hsl(0 0% 0% / 0.05), 
+        0px 5px 8px hsl(0 0% 0% / 0.1);
+}
+
+h1 {
+    letter-spacing: 3px;
+    font-size: 2.25em;
+}
+
+.btn {
+    border: none;
+    border-radius: 12px;
+    background-color: #64c65d;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    font-size: 1em;
+    width: 10rem;
+}
+
+.btn:hover {
+    background-color: #4abd42;
+}
+
+.delete-mode, .delete-mode.btn:hover {
+    background-color: #34842e;
+}
+
+.book-card {
+    padding: 1.5rem;
+    background-color: white;
+    margin: 0.75rem;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.read-btn {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+#library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 0.75rem;
+}
+
+#library > p {
+    margin-top: 3rem;
+    font-size: 1.25em;
+    color: #6a6a6a;
+    width: 100%;
+    text-align: center;
+}
