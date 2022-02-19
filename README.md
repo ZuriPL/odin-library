@@ -2,4 +2,4 @@
 
 The library project for theodinproject.com
 
-(Live)[https://zuripl.github.io/odin-library/]
+[Live](https://zuripl.github.io/odin-library/)

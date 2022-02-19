@@ -95,6 +95,7 @@ deleteButton.addEventListener('click', e => {
     deleteMode = !deleteMode
     deleteButton.classList.toggle('delete-mode')
 });
+<<<<<<< HEAD
 
 bookForm.addEventListener('click', e => e.stopPropagation())
 
@@ -126,3 +127,5 @@ addBookConfirmButton.addEventListener('click', e => {
 
     clearForm()
 })
+=======
+>>>>>>> 382e3c4100af0cb2eb01e5635669f214072f2194
