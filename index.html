@@ -18,5 +18,21 @@
     <div id="library">
         <p>No books in the library yet</p>
     </div>
+
+    <div id="overlay" class="hidden">
+        <div id="form-popup">          
+            <form>
+                <h2>Add a new book</h2>
+                <input type="text" class="input" placeholder="Title"/>
+                <input type="text" class="input" placeholder="Author"/>
+                <input type="text" class="input" placeholder="No. of pages"/>
+                <div style="display: flex; justify-content: space-between; padding-inline: 2px;">
+                    <label for="read-status">Read?</label>
+                    <input type="checkbox" name="read-status" id="read-status">
+                </div>
+                <button class="btn" id="addBookConfirmButton">Add</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

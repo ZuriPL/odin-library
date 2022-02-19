@@ -1,6 +1,9 @@
 const addBookButton = document.getElementById('addBook')
 const deleteButton = document.getElementById('deleteBook')
 const libraryDOM = document.getElementById('library')
+const formOverlay = document.getElementById('overlay')
+const bookForm = document.getElementById('form-popup')
+const addBookConfirmButton = document.getElementById('addBookConfirmButton')
 
 let myLibrary = [];
 let deleteMode = false;
@@ -12,13 +15,7 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead
 };
 
-function addBookToLibrary() {
-    const name = prompt('Set a name for your book');
-    const author = prompt('Set the author for your book');
-    const pages = prompt('How many pages does your book have?');
-    let isRead = prompt('Have you read it yet?').toLowerCase();
-    isRead = isRead == 'yes' ? true : false
-
+function addBookToLibrary(name, author, pages, isRead) {
     const book = new Book(name, author, pages, isRead);
     myLibrary.push(book);
 };
@@ -81,15 +78,51 @@ function UpdateBookList() {
         })
 
         libraryDOM.appendChild(bookCard)
+
     });
+    if (myLibrary.length == 0) {
+        const noBooksText = document.createElement('p')
+        noBooksText.textContent = 'No books in the library yet'
+        libraryDOM.appendChild(noBooksText)
+    }
 };
 
 addBookButton.addEventListener('click', e => {
-    addBookToLibrary()
-    UpdateBookList()
+    formOverlay.classList.remove('hidden')
 });
 
 deleteButton.addEventListener('click', e => {
     deleteMode = !deleteMode
     deleteButton.classList.toggle('delete-mode')
 });
+
+bookForm.addEventListener('click', e => e.stopPropagation())
+
+function clearForm() {
+    bookForm.children[0].children[1].value = ""
+    bookForm.children[0].children[2].value = ""
+    bookForm.children[0].children[3].value = ""
+    bookForm.children[0].children[4].children[1].checked = false
+}
+
+formOverlay.addEventListener('click', e => {
+    formOverlay.classList.add('hidden')
+    clearForm()
+})
+
+addBookConfirmButton.addEventListener('click', e => {
+    e.preventDefault()
+
+    addBookToLibrary(
+        bookForm.children[0].children[1].value,
+        bookForm.children[0].children[2].value,
+        bookForm.children[0].children[3].value,
+        bookForm.children[0].children[4].children[1].checked
+    )
+
+    UpdateBookList()
+
+    formOverlay.classList.add('hidden')
+
+    clearForm()
+})
