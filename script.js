@@ -8,11 +8,14 @@ const addBookConfirmButton = document.getElementById('addBookConfirmButton')
 let myLibrary = [];
 let deleteMode = false;
 
-function Book(title, author, pages, isRead) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.isRead = isRead
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.isRead = isRead
+        this.index = new Date()
+    }
 };
 
 function addBookToLibrary(name, author, pages, isRead) {
@@ -29,6 +32,7 @@ function UpdateBookList() {
     myLibrary.forEach(book => {
         const bookCard = document.createElement('div')
         bookCard.classList.add('book-card')
+        bookCard.setAttribute('index', myLibrary.indexOf(book))
 
         const bookTitle = document.createElement('h2')
         bookTitle.textContent = book.title
@@ -60,7 +64,7 @@ function UpdateBookList() {
         bookCard.addEventListener('click', e => {
             if (deleteMode) {
                 bookCard.remove()
-                myLibrary.splice(myLibrary.length - 1, 1)
+                myLibrary.splice(e.path[e.path.length - 6].getAttribute('index'), 1)
                 deleteMode = false
                 deleteButton.classList.toggle('delete-mode')
 
